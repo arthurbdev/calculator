@@ -2,7 +2,7 @@ const primDisplay = document.querySelector('#primary-display')
 const secondDisplay = document.querySelector('#secondary-display')
 const numButtons = document.querySelectorAll('.number')
 const operatorButtons = document.querySelectorAll('.operatorbtn')
-const equalbtn = document.querySelector('#equalbtn')
+const equalBtn = document.querySelector('#equalbtn')
 
 let resetScreen = false
 let operand = null
