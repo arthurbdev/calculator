@@ -10,6 +10,7 @@ const clearBtn = document.querySelector('#clearBtn')
 let resetScreen = false
 let operand = null
 let firstNum = secondNum = ''
+let roundTo = 4
 
 
 numButtons.forEach(btn => btn.addEventListener('click', () => enterNumber(btn.textContent)))
@@ -18,6 +19,11 @@ equalBtn.addEventListener('click', evaluate)
 dotBtn.addEventListener('click', addDot)
 delBtn.addEventListener('click', delChar)
 clearBtn.addEventListener('click', clear)
+
+// https://www.peterlunch.com/snippets/javascript-round
+function roundToX(num, decimals) {
+  return +(Math.round(num + "e" + decimals) + "e-" + decimals);
+}
 
 function clear() {
   primDisplay.textContent = '0'
@@ -50,7 +56,7 @@ function enterOperation(operator) {
 
 function evaluate() {
   secondNum = primDisplay.textContent
-  primDisplay.textContent = operate(operand, firstNum, secondNum)
+  primDisplay.textContent = roundToX(operate(operand, firstNum, secondNum), roundTo)
   secondDisplay.textContent = `${firstNum} ${operand} ${secondNum} =`
   operand = null
   resetScreen = true
@@ -80,7 +86,7 @@ function operate(operator, num1, num2) {
     case '-':
       return subtract(num1, num2)
     case '/':
-      if(num2 === 0) return null
+      if(num2 === 0) return "Division by 0 is not allowed."
       return divide(num1, num2)
     case '*':
       return multiply(num1, num2)
