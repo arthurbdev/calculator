@@ -1,7 +1,7 @@
 const primDisplay = document.querySelector('#primary-display')
 const secondDisplay = document.querySelector('#secondary-display')
-const numButtons = document.querySelector('.number-buttons').querySelectorAll('button')
-const operatorButtons = document.querySelector('.operator-buttons').querySelectorAll('button')
+const numButtons = document.querySelectorAll('.number')
+const operatorButtons = document.querySelectorAll('.operatorbtn')
 const equalbtn = document.querySelector('#equalbtn')
 
 let resetScreen = false
