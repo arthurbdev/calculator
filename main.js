@@ -36,7 +36,7 @@ function clear() {
 function delChar() {
   primDisplay.textContent.length <= 1
     ? primDisplay.textContent = '0' 
-    : primDisplay.textContent = primDisplay.textContent.slice(1)
+    : primDisplay.textContent = primDisplay.textContent.slice(0, -1)
 }
 
 function addDot() {
