@@ -5,6 +5,7 @@ const operatorButtons = document.querySelectorAll('.operatorBtn')
 const equalBtn = document.querySelector('#equalBtn')
 const dotBtn = document.querySelector('#dotBtn')
 const delBtn = document.querySelector('#deleteBtn')
+const clearBtn = document.querySelector('#clearBtn')
 
 let resetScreen = false
 let operand = null
@@ -16,6 +17,15 @@ operatorButtons.forEach(btn => btn.addEventListener('click', () => enterOperatio
 equalBtn.addEventListener('click', evaluate)
 dotBtn.addEventListener('click', addDot)
 delBtn.addEventListener('click', delChar)
+clearBtn.addEventListener('click', clear)
+
+function clear() {
+  primDisplay.textContent = '0'
+  secondDisplay.textContent = ''
+  firstNum = secondNum = ''
+  operand = null
+  resetScreen = false
+}
 
 function delChar() {
   primDisplay.textContent.length <= 1
