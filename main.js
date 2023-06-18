@@ -20,6 +20,17 @@ dotBtn.addEventListener('click', addDot)
 delBtn.addEventListener('click', delChar)
 clearBtn.addEventListener('click', clear)
 
+window.addEventListener('keydown', keyboardHandler)
+
+function keyboardHandler(e){
+  if(e.key >= 0 && e.key < 10) enterNumber(e.key)
+  if(e.key === 'Enter' || e.key ==='=') evaluate()
+  if(e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') enterOperation(e.key)
+  if(e.key === '.') addDot()
+  if(e.key === 'Delete' || e.key === 'Backspace') delChar()
+  console.log(e.key)
+}
+
 // https://www.peterlunch.com/snippets/javascript-round
 function roundToX(num, decimals) {
   return +(Math.round(num + "e" + decimals) + "e-" + decimals);
