@@ -11,7 +11,7 @@ let resetScreen = false
 let operand = null
 let firstNum = secondNum = ''
 let roundTo = 4
-
+let maxDigits = 9
 
 numButtons.forEach(btn => btn.addEventListener('click', () => enterNumber(btn.textContent)))
 operatorButtons.forEach(btn => btn.addEventListener('click', () => enterOperation(btn.textContent)))
@@ -76,6 +76,7 @@ function evaluate() {
 
 function enterNumber(num) {
   if(primDisplay.textContent === '0' || resetScreen) clearPrimDisplay()
+  if(primDisplay.textContent.length > maxDigits) resetScreen = true
   primDisplay.textContent += num
 }
 
