@@ -1,8 +1,9 @@
 const primDisplay = document.querySelector('#primary-display')
 const secondDisplay = document.querySelector('#secondary-display')
 const numButtons = document.querySelectorAll('.number')
-const operatorButtons = document.querySelectorAll('.operatorbtn')
-const equalBtn = document.querySelector('#equalbtn')
+const operatorButtons = document.querySelectorAll('.operatorBtn')
+const equalBtn = document.querySelector('#equalBtn')
+const dotBtn = document.querySelector('#dotBtn')
 
 let resetScreen = false
 let operand = null
@@ -11,8 +12,15 @@ let firstNum = secondNum = ''
 
 numButtons.forEach(btn => btn.addEventListener('click', () => enterNumber(btn.textContent)))
 operatorButtons.forEach(btn => btn.addEventListener('click', () => enterOperation(btn.textContent)))
+equalBtn.addEventListener('click', evaluate)
+dotBtn.addEventListener('click', addDot)
 
-equalbtn.addEventListener('click', evaluate)
+function addDot() {
+  if(resetScreen) clearPrimDisplay()
+  if(primDisplay.textContent.includes('.')) return
+  if(primDisplay.textContent === '') primDisplay.textContent = '0'
+  primDisplay.textContent += '.'
+}
 
 function enterOperation(operator) {
   if(operand !== null) evaluate()
