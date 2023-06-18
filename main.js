@@ -55,6 +55,7 @@ function enterOperation(operator) {
 }
 
 function evaluate() {
+  if(operand === null || resetScreen) return
   secondNum = primDisplay.textContent
   primDisplay.textContent = roundToX(operate(operand, firstNum, secondNum), roundTo)
   secondDisplay.textContent = `${firstNum} ${operand} ${secondNum} =`
